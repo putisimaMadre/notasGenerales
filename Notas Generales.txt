@@ -1,0 +1,203 @@
+
+======CREDENCIALES PARA ACCEDER A LA BASE DE DATOS ORACLE EN MAC M1 EN PARALLELS=======
+SYSTEM
+admin
+
+10.211.55.4
+
+=====CREAR UNA TABLA BASICA EN ORACLE====
+
+CREATE TABLE DBGEORGE.PERSONA
+( ID_PERSONA number(10) NOT NULL,
+  NOMBRE varchar2(50) NOT NULL,
+  APELLIDO varchar2(50) NOT NULL,
+  PRIMARY KEY (ID_PERSONA)
+);
+
+=======CREAR UNA SECUENCIA EN ORACLE=====
+Origen: https://www.tutorialesprogramacionya.com/oracleya/temarios/descripcion.php?cod=193
+
+Sintaxis general:
+
+Ejemplo:
+create sequence DBGEORGE.seq_personas
+  start with 1
+  increment by 1
+  maxvalue 99999
+  minvalue 1;
+
+ create sequence [schema.]NOMBRESECUENCIA
+  start with VALORENTERO
+  increment by VALORENTERO
+  maxvalue VALORENTERO
+  minvalue VALORENTERO
+  cycle | nocycle;
+
+- La cláusula "start with" indica el valor desde el cual comenzará la generación de números secuenciales. Si no se especifica, se inicia con el valor que indique "minvalue".
+
+- La cláusula "increment by" especifica el incremento, es decir, la diferencia entre los números de la secuencia; debe ser un valor numérico entero positivo o negativo diferente de 0. Si no se indica, por defecto es 1.
+
+- "maxvalue" define el valor máximo para la secuencia. Si se omite, por defecto es 99999999999999999999999999.
+
+- "minvalue" establece el valor mínimo de la secuencia. Si se omite será 1.
+
+- La cláusula "cycle" indica que, cuando la secuencia llegue a máximo valor (valor de "maxvalue") se reinicie, comenzando con el mínimo valor ("minvalue") nuevamente, es decir, la secuencia vuelve a utilizar los números. Si se omite, por defecto la secuencia se crea "nocycle".
+
+Si no se especifica ninguna cláusula, excepto el nombre de la secuencia, por defecto, comenzará en 1, se incrementará en 1, el mínimo valor será 1, el máximo será 999999999999999999999999999 y "nocycle".
+
+=======Para saber en que Schema nos encontramos Oracle========
+select sys_context( 'userenv', 'current_schema' ) from dual;
+
+=======Instalar Homebrew por primera vez=======
+Información origen: 
+https://blog.jdriven.com/2022/07/running-oracle-xe-with-testcontainers-on-apple-silicon/
+
+Instalar homebrew con el siguiente comando
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+Ejecutar las instrucciones que da después de la instalación, que deben de ser algo así
+- Run these three commands in your terminal to add Homebrew to your PATH:
+    echo '# Set PATH, MANPATH, etc., for Homebrew.' >> /Users/georgematrix/.zprofile
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/georgematrix/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+- Run brew help to get started
+
+=====Ejecutar Colima=======
+Hay que instalar docker con el siguiente comando
+brew install docker
+
+Hacer esto para configurar colima, luego hacer los dos exporta y por ultimo hacer el pull de la base de datos
+
+colima start --arch x86_64 --memory 4
+export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
+export DOCKER_HOST="unix://${HOME}/.colima/docker.sock"
+docker pull gvenzl/oracle-xe
+
+======PARA LEVANTAR LA BASE DE DATOS ORACLE EN DOCKER=====
+Ejecute un nuevo contenedor de base de datos (los datos se eliminan cuando se elimina el contenedor, pero se mantienen durante los reinicios del contenedor):
+docker run -d -p 1521:1521 -e ORACLE_PASSWORD=admin gvenzl/oracle-xe
+
+Ejecute un nuevo contenedor de base de datos persistente (los datos se mantienen a lo largo de los ciclos de vida del contenedor):
+docker run -d -p 1521:1521 -e ORACLE_PASSWORD=admin -v oracle-volume:/opt/oracle/oradata gvenzl/oracle-xe
+
+Para bajar el servicio
+Docker stop [container id]
+
+=======Conectar a base de datos Oracle=========
+Desde aqui hacemos un pull de la base de datos
+https://hub.docker.com/r/gvenzl/oracle-xe
+
+Ejecutamos el segundo comando que es para que persista la información
+docker run -d -p 1521:1521 -e ORACLE_PASSWORD=admin -v oracle-volume:/opt/oracle/oradata gvenzl/oracle-xe
+Y cambiamos la clave, para este caso la clave fue admin
+
+Descargamos el Sqldeveloper y probamos la coneccion con los siguientes datos:
+
+Name: localhost
+Usuario: SYS  /   SYSTEM
+Contraseña: admin  /  admin
+Rol: SYSDBA    /    valor por defecto
+Nombre del host: localhost
+Puerto: 1521
+SID: xe
+
+==========Para crear mas usuarios=======
+Nos vamos a Otros Usuarios y le damos click derecho
+Nos vamos a crear nuevo usuario
+En la pestaña de usuario llenamos Usuario y ponemos una contraseña, en la parte de tablespace ponemos Users y temp
+En roles otorgados ponemos todos en otorgado y administrar
+En privilegios del sistema ponemos todos en otorgado y Opción Admin, a excepción de todos los que comienzan con SYS, como por ejemplo SYSBACKUP, SYSDBA, ya que si no dará error
+En Cuotas SYSTEM Y USERS
+Y por ultimo aplicar
+
+NOTA:ES MUY IMPORTANTE QUE SE IDENTIFIQUE DONDE SE ESTAN CREANDO LAS TABLAS POR QUE SI NO SPRING NO LAS VA A VISUALIZAR Y DARA UN ERROR
+
+REVISAR EJEMPLOS DE LA PAGINA:
+https://mariocelis.com/sql/create-table/
+
+===========Properties para colección a base de datos Oracle=============
+
+spring.datasource.url=jdbc:oracle:thin:@//localhost:1521/XE
+spring.datasource.username=curso_oracle
+spring.datasource.password=jorge1
+spring.jpa.show-sql=true
+spring.jpa.hibernate.naming.strategy=org.hibernate.cfg.ImprovedNamingStrategy
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.Oracle12cDialect
+
+
+=========Properties para base de datos con Oracle - Docker==============
+
+spring.datasource.url=jdbc:oracle:thin:@//localhost:1521/XE
+spring.datasource.username=SYSTEM
+spring.datasource.password=admin
+spring.jpa.show-sql=true
+spring.jpa.hibernate.naming.strategy=org.hibernate.cfg.ImprovedNamingStrategy
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.Oracle12cDialect
+
+=======Segun una pagina solo las mínimas configuraciones serian estas====
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521:xe
+spring.datasource.username=username
+spring.datasource.password=password
+
+
+======Comandos de Git==========
+git status
+git log --oneline				para ver los logs
+git remote -v				para ver los remotos que se tienen, si no hay ninguno solo no da nada
+git branch					para ver los branch (primero se tiene que hacer un commit si no se va a mostrar en blanco)
+git commit -m "mensaje"			para hacer un commit
+git push Origin main			para hacer un push
+git checkout "nombreDelBranch"	para cambiar de branch
+
+
+=====Comandos de configuración de git======
+
+git config user.name putisima_madre
+git config user.email putisima_madre@hotmail.com
+git config user.password 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
+git remote add origin https://github.com/putisimaMadre/oracle-docker.git
+
+git remote add origin 
+
+NOTA: cuando se tiene mas de una rama y se requiere crear un nuevo branch en el remoto (en internet), el proceso es el mismo.
+Ejemplo de esto seria:
+pit push origin desarrollo
+
+=====CLAVE PARA MONGODB=====
+mongodb+srv://admin:jorgeNieto1@cluster0.0j00ly0.mongodb.net/cliente12042023
+
+=====MONGO====
+
+Para poder hacer pruebas localmente con mongo hay que descargar
+-Mongo compas
+-MongoDB Shell
+-MongoDB Community Server
+
+Los dos ultimos hay que agregarlos al path de variables de Sistema de windos en el apartado de “Variables de sistema”
+
+====MONGO EN MAC=====
+
+Para levantar el servicio en Mac se pone el siguiente comando
+brew services start mongodb-community@6.0
+
+Para detenerlo
+brew services stop mongodb-community@6.0
+
+Para entrar en la consola
+Mongosh
+
+Comandos
+Show bds
+Show collections
+Db.clientes.find()
+
+Esta es la pagina donde esta toda la documentación
+https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/
+
+=====LARAVEL=====
+
+Crear un Proyecto
+composer create-project laravel/laravel example-app
+
+crear modelo controller, micracion resource
+php artisan make:model Product -mcr
