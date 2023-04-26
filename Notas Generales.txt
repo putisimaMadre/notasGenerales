@@ -201,3 +201,37 @@ composer create-project laravel/laravel example-app
 
 crear modelo controller, micracion resource
 php artisan make:model Product -mcr
+
+====Para produccion en CPanel====
+
+-en cPanel crear la base de datos con su respectivo usuario y crear la tabla
+-zipear el proyecto de laravel y modificar los valores del .env para que coincida con los datos del server de cPanel
+-si el proyecto se descomprime en la carpeta public y poder probar el servicio rest quedaria asi:
+http://sistemas-integrales-fw.com/p24042023l/public/api/clientes -----> ejemplo
+-hay que revisar que la version de php sea la correspondiente para que el proyecto de laravel funcione correctamente
+
+-se tiene que generar el archivo .htcaccess con lo siguiente:
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+
+RewriteRule ^(.*) /index.html [NC,L]
+</IfModule>
+
+si todo funciona correctamente se debe de poder accesar a una liga similar a esta: donde se tiene el dominio, luego el nombre del proyecto de laravel y luego la ruta
+http://sistemas-integrales-fw.com/p24042023l/public/api/clientes
+
+
+
+======Angular======
+
+ng build --configuration production
+
+====Para produccion=====
+
+
+
