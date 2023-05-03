@@ -229,9 +229,16 @@ http://sistemas-integrales-fw.com/p24042023l/public/api/clientes
 
 ======Angular======
 
-ng build --configuration production
 
 ====Para produccion=====
+ng build --configuration production
 
+========Android Studio=====
 
+Para que funcione correctamente hay que ver primero que en la BIOS este habilitada la virtualizacion
+despues hay que ir al buscador de windows y escribir hyper y escoger la opcion que dice activar o desactivar caracteristicas de windows
+una vez ahi hay que revisar que las opciones de:
+-plataforma de hypervisor de windows
+-plataforma de maquina virtual
 
+deben de estar palomeada
