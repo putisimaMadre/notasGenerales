@@ -154,10 +154,10 @@ git checkout "nombreDelBranch"	para cambiar de branch
 
 git config user.name putisima_madre
 git config user.email putisima_madre@hotmail.com
-git config user.password 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
+git config user.password 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
 git remote add origin https://github.com/putisimaMadre/oracle-docker.git
 
-git remote add origin 
+git remote add origin https://github.com/putisimaMadre/evalFormAngular.git
 
 NOTA: cuando se tiene mas de una rama y se requiere crear un nuevo branch en el remoto (en internet), el proceso es el mismo.
 Ejemplo de esto seria:
