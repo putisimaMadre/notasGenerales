@@ -155,6 +155,7 @@ git checkout "nombreDelBranch"	para cambiar de branch
 git config user.name putisima_madre
 git config user.email putisima_madre@hotmail.com
 git config user.password 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 - 11052023
+git config user.password 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 - 15052023
 git remote add origin https://github.com/putisimaMadre/oracle-docker.git
 
 git remote add origin https://github.com/putisimaMadre/evalFormAngular.git
