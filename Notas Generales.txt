@@ -146,8 +146,10 @@ git log --oneline				para ver los logs
 git remote -v				para ver los remotos que se tienen, si no hay ninguno solo no da nada
 git branch					para ver los branch (primero se tiene que hacer un commit si no se va a mostrar en blanco)
 git commit -m "mensaje"			para hacer un commit
-git push Origin main			para hacer un push
+git push origin main			para hacer un push
 git checkout "nombreDelBranch"	para cambiar de branch
+git log --oneline
+git reset --hard 749981e
 
 
 =====Comandos de configuración de git======
@@ -201,6 +203,9 @@ composer create-project laravel/laravel example-app
 
 crear modelo controller, micracion resource
 php artisan make:model Product -mcr
+
+Pagina para ver algunos usos de Query Builder
+https://laravel.com/docs/10.x/queries#where-clauses
 
 ====Para produccion en CPanel====
 
