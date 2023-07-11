@@ -158,6 +158,7 @@ git config user.name putisima_madre
 git config user.email putisima_madre@hotmail.com
 git config user.password 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 - 11052023
 git config user.password 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 - 15052023
+git config user.password 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 - 20052023
 git remote add origin https://github.com/putisimaMadre/oracle-docker.git
 
 git remote add origin https://github.com/putisimaMadre/evalFormAngular.git
@@ -248,3 +249,14 @@ una vez ahi hay que revisar que las opciones de:
 -plataforma de maquina virtual
 
 deben de estar palomeada
+
+
+=======Validacion Kotlin Email=======
+
+return !TextUtils.isEmpty(this) && android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()
+
+
+
+
+
+
