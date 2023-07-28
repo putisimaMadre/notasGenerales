@@ -255,8 +255,93 @@ deben de estar palomeada
 
 return !TextUtils.isEmpty(this) && android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()
 
+=====LINUX checkFiles======
+
+-b FILE
+
+FILE exists and is block special
+
+-c FILE
+
+FILE exists and is character special
+
+-d FILE
+
+FILE exists and is a directory
+
+-e FILE
+
+FILE exists
+
+-f FILE
+
+FILE exists and is a regular file
+
+-g FILE
+
+FILE exists and is set-group-ID
+
+-g FILE
+
+FILE exists and is owned by the effective group ID
+
+https://www.educatica.es/informatica/sistemas-operativos/gnu-linux-bash/shell-scripts/checkfile-sh/
+
+=======Darle permiso al archivo======
+chmod +x /ruta/al/archivo.sh
 
 
+======Crear y editar un archivo vía SSH====
+
+[server]$ vim index.html
+
+Presiona la letra i en tu teclado para ingresar el modo INSERT (insertar).
+Comienza a escribir dentro del archivo.
+Cuando termines de editar el archivo, presiona la tecla ESC. Esto te saca del modo INSERT y -- INSERT -- desaparece de la parte inferior izquierda de tu terminal.
+Para guardar el archivo, escribe dos puntos (:) seguido de wq
+:wq
+
+====Todo con respecto a las variables=====
+
+https://atareao.es/tutorial/scripts-en-bash/variables-en-bash/
 
 
+======checkFiles PowerShell======
+https://hovermind.com/powershell/file-and-folder.html#check-file-and-folder-exists
 
+=====Variables Globales PowerShell======
+
+$global:myglobalvariable="This is a PowerShell global variable"
+or
+$global:myglobalvariable2 = $null
+
+
+===========PARAMETROS EN BASH LINUX=========
+
+https://es.ccm.net/ordenadores/linux/2368-bash-los-parametros/
+
+
+========Bash Wildcard=======
+SON LOS PARAMETROS RAROS QUE SE LLEGAN A VER EN BASH SCRIPTING DE LINUX LOS MAS 
+COMUNES SON EL ASTERISCO EL SIGNO DE INTERROGACION Y LOS CORCHETES
+
+El asterisco (*) se utiliza para buscar un carácter en particular cero o más
+veces. El signo de interrogación (?) se utiliza para buscar un número 
+fijo de caracteres donde cada signo de interrogación (?) indica cada 
+carácter. Los corchetes se utilizan para hacer coincidir los caracteres 
+de un rango definido o un grupo de caracteres
+
+https://linuxhint.com/bash_wildcard_tutorial/
+
+
+==========DATE============
+
+https://blog.itpro.tv/get-date-powershell-cmdlet/
+
+=====CURSO DE LINUX Y BASH========
+https://aprendeaprogramar.com/mod/resource/view.php?id=174
+
+==================CLASSPATH================
+La variable de entorno CLASSPATH es utilizada por Java Runtime 
+Environment (JRE) o por Java Development Kit (JDK) para encontrar 
+las clases Java y otros archivos de recursos del sistema operativo.
