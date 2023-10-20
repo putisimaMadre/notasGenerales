@@ -162,6 +162,10 @@ git config user.password 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 - 20052023
 git config user.password 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 - 28072023
 git config user.password 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 - 05092023
 
+git config user.password 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 - 19092023 - georgeelfurioso
+
+git config user.password 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 - 20102023
+
 git remote add origin https://github.com/putisimaMadre/oracle-docker.git
 
 git remote add origin https://github.com/putisimaMadre/evalFormAngular.git
@@ -351,3 +355,30 @@ las clases Java y otros archivos de recursos del sistema operativo.
 
 ===============INSTRUCCIONES DE DOCKER=================
 docker build . -t "demodocker:v1". <===== PARA PONERLE NOMBRE A LA NUEVA IMAGEN
+
+NOTA: para poner el COPY hay que ponerlo así
+COPY target/cliente1-0.0.1-SNAPSHOT.jar .      <-----CORRECTO
+COPY ./target/cliente1-0.0.1-SNAPSHOT.jar .    <-----INCORRECTO
+
+NOTA2: para angular debe de coincidir la version que se tiene en la maquina
+Por ejemplo si al hacer un note --version da la version 18.12, hay que buscar una en el repositorio
+Que sea igual para este caso por ejemplo quedo con esta node:18.12-alpine3.17
+
+Referencia: https://serengetitech.com/tech/how-to-dockerize-your-angular-14-application/
+
+====================DOCKERIZAR UNA APP ANGULAR=====================
+FROM node:18.12-alpine3.17 AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+EXPOSE 4200
+CMD ["npm", "start"]
+
+# Serve Application using Nginx Server
+FROM nginx:mainline-alpine3.18-slim
+COPY --from=build /app/dist/demo-docker-angular/ /usr/share/nginx/html
+EXPOSE 80
+
+En ocaciones no crea la imagen
