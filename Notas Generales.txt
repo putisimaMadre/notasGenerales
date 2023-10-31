@@ -115,7 +115,7 @@ NOTA:ES MUY IMPORTANTE QUE SE IDENTIFIQUE DONDE SE ESTAN CREANDO LAS TABLAS POR 
 REVISAR EJEMPLOS DE LA PAGINA:
 https://mariocelis.com/sql/create-table/
 
-===========Properties para colección a base de datos Oracle=============
+===========Properties para coneccion a base de datos Oracle=============
 
 spring.datasource.url=jdbc:oracle:thin:@//localhost:1521/XE
 spring.datasource.username=curso_oracle
@@ -457,3 +457,6 @@ Por ultimo
 docker run my-project -p 127.0.0.1:4000:80
 
 Nota el puerto debe de tener el 127.0.0.1 por que si no no funcionara
+
+====================================ORACLE CREAR NUEVOS USUARIOS==============================
+https://www.youtube.com/watch?v=9dPzO2PpnvM
