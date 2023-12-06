@@ -150,10 +150,11 @@ git push origin main			para hacer un push
 git checkout "nombreDelBranch"	para cambiar de branch
 git log --oneline
 git reset --hard 749981e
+git rebase      en ocaciones sirve para quitar mensajes, que no dejan avanzar, pero primero hacer un git fetch origin main
 
 
 =====Comandos de configuración de git======
-
+git initi
 git config user.name putisima_madre
 git config user.email putisima_madre@hotmail.com
 git config user.password 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 - 11052023
@@ -167,6 +168,10 @@ git config user.password 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 - 19092023 - g
 git config user.password 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 - 20102023
 
 git config user.password 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 - 23102023
+
+git config user.password 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 - 31102023
+
+git config user.password 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 - 05122023
 
 git remote add origin https://github.com/putisimaMadre/oracle-docker.git
 
@@ -214,6 +219,22 @@ composer create-project laravel/laravel example-app
 
 crear modelo controller, micracion resource
 php artisan make:model Product -mcr
+
+Crear Cors
+php artisan make:middleware Cors
+
+Esto es lo que lleva el CORS
+return $next($request)
+            ->header("Access-Control-Allow-Origin", "http://sistemas-integrales-fw.com")
+        //Métodos que a los que se da acceso
+        ->header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE")
+        //Headers de la petición
+        ->header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, X-Token-Auth, Authorization");
+
+Y luego hay que ponerlo en el Kernel
+
+En el apartado de $middlewareAliases
+'cors' => \App\Http\Middleware\Cors::class,
 
 Pagina para ver algunos usos de Query Builder
 https://laravel.com/docs/10.x/queries#where-clauses
@@ -375,6 +396,13 @@ las clases Java y otros archivos de recursos del sistema operativo.
 ===============INSTRUCCIONES DE DOCKER=================
 docker build . -t "demodocker:v1" . <===== PARA PONERLE NOMBRE A LA NUEVA IMAGEN
 
+====================================PARA VER LOS LOGS EN DOCKER===============================
+Docker ps -a      =====> 	para ver los contenedores
+
+Seleccionar el nombre y poner el siguiente comando
+
+docker logs gallant_ramanujan
+
 NOTA: para poner el COPY hay que ponerlo así
 COPY target/cliente1-0.0.1-SNAPSHOT.jar .      <-----CORRECTO
 COPY ./target/cliente1-0.0.1-SNAPSHOT.jar .    <-----INCORRECTO
@@ -387,17 +415,18 @@ Referencia: https://serengetitech.com/tech/how-to-dockerize-your-angular-14-appl
 
 ====================DOCKERIZAR UNA APP ANGULAR=====================
 
+
 Primero crear el archivo Dockerfile en la raíz del proyecto con los siguientes datos
 
 FROM nginx:1.13.9-alpine
 
-COPY ./dist/p28102023a/ /usr/share/nginx/html
+COPY ./dist/p28102023a/ /usr/share/nginx/html.    ====> Nota: aqui hay que cambiarle el nombre del proyecto
 
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 
 CMD ["nginx", "-g", "daemon off;"]
 
-Luego crear el archivo nginx.conf con los siguientes datos
+=========Luego crear el archivo nginx.conf con los siguientes datos=============
 
 server {
   listen 80;
@@ -443,20 +472,44 @@ server {
   }
 }
 
-Después hacer un
+============Después hacer un=========
 
-npm install
+npm install. ======> solo si no tiene el node_modules
 npm run build
 
-Después construir el contenedor
+==========Después construir el contenedor===============
 
 docker build -t my-project .
 
-Por ultimo
+==========Por ultimo============
 
-docker run my-project -p 127.0.0.1:4000:80
+docker run -p 127.0.0.1:4000:80 image_id
 
 Nota el puerto debe de tener el 127.0.0.1 por que si no no funcionara
 
 ====================================ORACLE CREAR NUEVOS USUARIOS==============================
 https://www.youtube.com/watch?v=9dPzO2PpnvM
+
+
+=====================================MYSQL DESDE TERMINAL=====================================
+Poner este comando en la terminal
+/usr/local/mysql/bin/mysql -u root -p
+
+====================================JENKINGS================================
+
+docker run -p 8080:8080 -p 50000:50000 --restart=on-failure -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk17
+
+https://boozallen.github.io/sdp-docs/learning-labs/1/local-development/3-configure-jenkins.html
+
+=================================Ejemplo de java con jenkins==================================
+
+https://www.fosstechnix.com/how-to-build-java-project-using-maven-in-jenkins/
+
+Lobito10
+0508@
+
+===========================Direccion de JAVA 5 de Diciembre 2023 en Mac M1========
+/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home/bin
+
+======================VARIABLES GLOBALES EN MAC========================
+https://mkyong.com/java/maven-java_home-is-not-defined-correctly-on-mac-osx/
