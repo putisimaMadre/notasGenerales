@@ -155,8 +155,8 @@ git rebase      en ocaciones sirve para quitar mensajes, que no dejan avanzar, p
 
 =====Comandos de configuración de git======
 git initi
-git config user.name putisima_madre
-git config user.email putisima_madre@hotmail.com
+git config --global user.name putisima_madre
+git config --global user.email putisima_madre@hotmail.com
 git config user.password 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 - 11052023
 git config user.password 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 - 15052023
 git config user.password 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 - 20052023
@@ -172,6 +172,8 @@ git config user.password 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 - 23102023
 git config user.password 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 - 31102023
 
 git config user.password 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 - 05122023
+
+git config user.password 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 - 03012024
 
 git remote add origin https://github.com/putisimaMadre/oracle-docker.git
 
@@ -513,3 +515,10 @@ Lobito10
 
 ======================VARIABLES GLOBALES EN MAC========================
 https://mkyong.com/java/maven-java_home-is-not-defined-correctly-on-mac-osx/
+
+
+==============================MAPEO DE TABLAS CON INTELLIJ============================
+poner la opcion de properties
+des-tildar todas las llaves azules
+recordar que para cada relacion debe de estar su contraparte en las dos tablas, osea 
+debe estar su relacion
