@@ -69,6 +69,7 @@ brew install docker
 Hacer esto para configurar colima, luego hacer los dos exporta y por ultimo hacer el pull de la base de datos
 
 colima start --arch x86_64 --memory 4
+colima start --cpu 1 --arch x86_64 --memory 4
 export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
 export DOCKER_HOST="unix://${HOME}/.colima/docker.sock"
 docker pull gvenzl/oracle-xe
@@ -513,3 +514,9 @@ Lobito10
 
 ======================VARIABLES GLOBALES EN MAC========================
 https://mkyong.com/java/maven-java_home-is-not-defined-correctly-on-mac-osx/
+
+=======================identificar que puerto esta ocupado en windows=============
+
+Netstat -aon | findstr 8080
+
+Este comando nos dara información y entre ella esta el pid, este hay que buscarlo en el administrador de tareas y finalizar tarea
