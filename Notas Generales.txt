@@ -184,6 +184,8 @@ git remote add origin https://github.com/putisimaMadre/algebra21022024.git
 
 Git remote add origin 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 - 22012024
 
+git config user.password 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 - 27022024 
+
 NOTA: cuando se tiene mas de una rama y se requiere crear un nuevo branch en el remoto (en internet), el proceso es el mismo.
 Ejemplo de esto seria:
 pit push origin desarrollo
