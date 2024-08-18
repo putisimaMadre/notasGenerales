@@ -504,6 +504,9 @@ https://www.youtube.com/watch?v=9dPzO2PpnvM
 Poner este comando en la terminal
 /usr/local/mysql/bin/mysql -u root -p
 
+====================================MYSQL PARA CREAR UNA RELACION=============================
+ALTER TABLE ventas ADD CONSTRAINT fk_compras FOREIGN KEY (id_compras) REFERENCES compras (idcompras);
+
 ====================================JENKINGS================================
 
 docker run -p 8080:8080 -p 50000:50000 --restart=on-failure -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk17
