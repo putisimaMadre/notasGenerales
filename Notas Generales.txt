@@ -89,7 +89,8 @@ docker run -p 8080:8080 -p 50000:50000 --restart=on-failure jenkins/jenkins:lts-
 
 con volumenes
 
-docker run -d -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 --restart=on-failure jenkins/jenkins:lts-jdk17
+docker run -d -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 --restart=on-failure jenkins/jenkins:lts-jdk17
+
 
 =======Conectar a base de datos Oracle=========
 Desde aqui hacemos un pull de la base de datos
@@ -544,3 +545,7 @@ poner la opcion de properties
 des-tildar todas las llaves azules
 recordar que para cada relacion debe de estar su contraparte en las dos tablas, osea 
 debe estar su relacion
+
+==============================ACTIVAR O DESACTIVAR MACHINE LEARNING INTELLIJ========================
+Editor->general->code
+desactivar machine learning
