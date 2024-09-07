@@ -549,3 +549,9 @@ debe estar su relacion
 ==============================ACTIVAR O DESACTIVAR MACHINE LEARNING INTELLIJ========================
 Editor->general->code
 desactivar machine learning
+
+==============================INSTALAR NVM=================================
+Es una una herramienta que permite gestionar múltiples versiones de Node.js en un mismo sistema
+
+https://www.youtube.com/watch?v=I8H4wolRFBk
+https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating
