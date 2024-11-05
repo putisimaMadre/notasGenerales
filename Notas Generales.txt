@@ -78,8 +78,7 @@ docker pull gvenzl/oracle-xe
 Ejecute un nuevo contenedor de base de datos (los datos se eliminan cuando se elimina el contenedor, pero se mantienen durante los reinicios del contenedor):
 docker run -d -p 1521:1521 -e ORACLE_PASSWORD=admin gvenzl/oracle-xe
 
-Ejecute un nuevo contenedor de base de datos persistente (los datos se mantienen a lo largo de los ciclos de vida del contenedor):
-docker run -d -p 1521:1521 -e ORACLE_PASSWORD=admin -v oracle-volume:/opt/oracle/oradata gvenzl/oracle-xe
+Ejecute un nuevo contenedor de base de datos persistente (los datos se mantienen a lo largo de los ciclos de vida del contenedor):cdocker run -d -p 1521:1521 -e ORACLE_PASSWORD=admin -v oracle-volume:/opt/oracle/oradata gvenzl/oracle-xe
 
 Para bajar el servicio
 Docker stop [container id]
@@ -555,3 +554,9 @@ Es una una herramienta que permite gestionar múltiples versiones de Node.js en 
 
 https://www.youtube.com/watch?v=I8H4wolRFBk
 https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating
+
+==============================LEVANTAR MULTIPLES INSTANCIAS================
+
+Add VM Options
+
+-Dserver.port=8003
