@@ -247,6 +247,14 @@ return $next($request)
         //Headers de la petición
         ->header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, X-Token-Auth, Authorization");
 
+====ACTUALIZACION DE LO QUE LLEVA ADENTRO EL CORS 2024====
+$response = $next($request);
+$response->headers->set('Access-Control-Allow-Origin' , '*');
+$response->headers->set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE');
+$response->headers->set('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With, Application','ip');
+return $response;
+
+
 Y luego hay que ponerlo en el Kernel
 
 En el apartado de $middlewareAliases
@@ -560,3 +568,13 @@ https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating
 Add VM Options
 
 -Dserver.port=8003
+
+==========================comandos para brew en Mac============================
+Brew search php    -------------> 	para buscar todo los paquetes instalados de php
+Brew install php@8.2   ------------->		para instalar una version de php
+Brew unlink php  ----------------->    para deslinkear una version de php
+Brew link php@8.2  ------------>      para linkear una version determinada de php
+
+
+=========================levantar apache en Mac==============================
+Sudo apachectl start
