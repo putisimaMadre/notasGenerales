@@ -563,6 +563,15 @@ Es una una herramienta que permite gestionar múltiples versiones de Node.js en 
 https://www.youtube.com/watch?v=I8H4wolRFBk
 https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating
 
+https://pensemosweb.com/instalar-nodejs-nvm-macos-linux-windows/
+
+==============================OPCIONES CON MULTIPLES VERSIONES DE NODE===================
+
+nvm ls-remote  ------------>    para verificar las versiones que hay
+nvm install v16.20.2   ----------->    Se instala la version requerida
+nvm use v16.20.2  ---------->     si no se actualiza, utilizar este comando
+
+
 ==============================LEVANTAR MULTIPLES INSTANCIAS================
 
 Add VM Options
