@@ -239,6 +239,16 @@ php artisan make:model Product -mcr
 Crear Cors
 php artisan make:middleware Cors
 
+Crear Seeder
+php artisan make:seeder PadreSeeder
+
+Ejecutar Seeder
+php artisan db:seed --class=PadreSeeder
+
+=============Foreing key laravel===========
+$table->unsignedBigInteger("idPadre")->unique();
+$table->foreingn("idPadre")->references("id")->on("padres");
+
 Esto es lo que lleva el CORS
 return $next($request)
             ->header("Access-Control-Allow-Origin", "http://sistemas-integrales-fw.com")
@@ -591,3 +601,4 @@ Sudo apachectl start
 ==============================Laravel composer dump-autoload================================
 
 El comando composer dump-autoload de Composer sirve para generar o actualizar el archivo autoload.php, que permite cargar clases de forma automática. Esto mejora la organización y la eficiencia del código, ya que no es necesario incluir las clases manualmente con require o include.
+
