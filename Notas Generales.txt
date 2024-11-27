@@ -161,6 +161,23 @@ git reset --hard 749981e
 git rebase      en ocaciones sirve para quitar mensajes, que no dejan avanzar, pero primero hacer un git fetch origin main
 
 
+=========================================PARA ELIMINAR ARCHIVOS DE GIT QUE YA NO QUEREMOS QUE ESTEN COMO UNTRACKED========================
+# Primero mostramos el listado de los ficheros a eliminar:
+git clean -fn
+
+# Si estamos conforme eliminamos los ficheros:
+git clean -f
+
+# Si ademas queremos eliminar directorios:
+git clean -fd
+
+# Si queremos elminar los ficheros ignorados (ignored files):
+git clean -fX
+
+# Si queremos eliminar tanto los ignorados como los que no:
+git clean -fx
+
+
 =====Comandos de configuración de git======
 git initi
 git config --global user.name putisima_madre
