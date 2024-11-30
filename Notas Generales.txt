@@ -617,5 +617,11 @@ Sudo apachectl start
 
 ==============================Laravel composer dump-autoload================================
 
-El comando composer dump-autoload de Composer sirve para generar o actualizar el archivo autoload.php, que permite cargar clases de forma automática. Esto mejora la organización y la eficiencia del código, ya que no es necesario incluir las clases manualmente con require o include.
+El comando composer dump-autoload de Composer sirve para generar o actualizar el archivo autoload.php, 
+que permite cargar clases de forma automática. Esto mejora la organización y la eficiencia del código, 
+ya que no es necesario incluir las clases manualmente con require o include.
 
+=============================Despues de clonar un proyecto de laravel=======================
+composer install <------ para descargar dependencias
+
+despues ir a PHP.ini y habilitar el ;extension=zip y quitarle el ";"
