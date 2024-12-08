@@ -625,3 +625,26 @@ ya que no es necesario incluir las clases manualmente con require o include.
 composer install <------ para descargar dependencias
 
 despues ir a PHP.ini y habilitar el ;extension=zip y quitarle el ";"
+
+
+===============Para pasar datos de un componente a un modal en Angular============
+primero se tienen dos componentes
+el primero es el base
+el segundo es el modal
+
+en el primero vamos a poner esto
+
+openDialog(id: number): void {
+    this.dialog.open(DatosGeneralesDialogComponent, {
+      data:{
+        idDG:id
+      }
+    });
+  }
+
+y en el segundo vamos a recibir esos valores en el constructor asi
+
+constructor(private antecedentesFyH: AntecedentesFyHService,
+    @Inject(MAT_DIALOG_DATA) public datosGenerales: any 
+  ){}
+  
