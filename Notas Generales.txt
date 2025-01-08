@@ -249,6 +249,7 @@ https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/
 
 Crear un Proyecto
 composer create-project laravel/laravel example-app
+composer create-project laravel/laravel:^10.0 example-app
 
 crear modelo controller, micracion resource
 php artisan make:model Product -mcr
@@ -261,6 +262,22 @@ php artisan make:seeder PadreSeeder
 
 Ejecutar Seeder
 php artisan db:seed --class=PadreSeeder
+
+==========================hasOne, belongsTo, hasMany======================
+hasOne = Tiene un
+belongsTo = Pertence a
+hasMany = tiene muchos
+
+Ejemplo de hasOne
+tabla 1 Usuario 
+tabla 2 Phone
+
+en el modelo Usuario iria el hasOne por que dice "tiene un Phone" entonces en la tabla 2 iria 
+el belongsTo que quiere decir "un telefono pertenece a un usuario"
+
+mas informacion sobre esto:
+https://documentacionlaravel.com/docs/11.x/eloquent-relationships#one-to-one
+
 
 =============Foreing key laravel===========
 $table->unsignedBigInteger("idPadre")->unique();
