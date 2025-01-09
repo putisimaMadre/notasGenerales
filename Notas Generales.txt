@@ -161,23 +161,6 @@ git reset --hard 749981e
 git rebase      en ocaciones sirve para quitar mensajes, que no dejan avanzar, pero primero hacer un git fetch origin main
 
 
-=========================================PARA ELIMINAR ARCHIVOS DE GIT QUE YA NO QUEREMOS QUE ESTEN COMO UNTRACKED========================
-# Primero mostramos el listado de los ficheros a eliminar:
-git clean -fn
-
-# Si estamos conforme eliminamos los ficheros:
-git clean -f
-
-# Si ademas queremos eliminar directorios:
-git clean -fd
-
-# Si queremos elminar los ficheros ignorados (ignored files):
-git clean -fX
-
-# Si queremos eliminar tanto los ignorados como los que no:
-git clean -fx
-
-
 =====Comandos de configuración de git======
 git initi
 git config --global user.name putisima_madre
@@ -249,7 +232,6 @@ https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/
 
 Crear un Proyecto
 composer create-project laravel/laravel example-app
-composer create-project laravel/laravel:^10.0 example-app
 
 crear modelo controller, micracion resource
 php artisan make:model Product -mcr
@@ -263,25 +245,9 @@ php artisan make:seeder PadreSeeder
 Ejecutar Seeder
 php artisan db:seed --class=PadreSeeder
 
-==========================hasOne, belongsTo, hasMany======================
-hasOne = Tiene un
-belongsTo = Pertence a
-hasMany = tiene muchos
-
-Ejemplo de hasOne
-tabla 1 Usuario 
-tabla 2 Phone
-
-en el modelo Usuario iria el hasOne por que dice "tiene un Phone" entonces en la tabla 2 iria 
-el belongsTo que quiere decir "un telefono pertenece a un usuario"
-
-mas informacion sobre esto:
-https://documentacionlaravel.com/docs/11.x/eloquent-relationships#one-to-one
-
-
 =============Foreing key laravel===========
 $table->unsignedBigInteger("idPadre")->unique();
-$table->foreingn("idPadre")->references("id")->on("padres");
+$table->foreign("idPadre")->references("id")->on("padres");
 
 Esto es lo que lleva el CORS
 return $next($request)
@@ -350,6 +316,16 @@ Y en el angular.json dejarlo de la siguiente manera
    "node_modules/primeflex/primeflex.scss"
 
 En el proyecto p25102023a esta un ejemplo
+
+======================PROBLEMA AL INSTALAR ANGULAR MATERIAL====================
+
+El problema es que al querer instalar el angular material daba este error
+"Cannot find module node_modules/@schematics/angular/private/components.js'"
+Solución: verificar en el package.json las versiones que se están utilizando e instalar la misma
+
+Por ejemplo: ng add @angular/material@18
+
+Con el @18
 
 
 ====Para produccion=====
@@ -633,35 +609,7 @@ Brew link php@8.2  ------------>      para linkear una version determinada de ph
 Sudo apachectl start
 
 ==============================Laravel composer dump-autoload================================
+composer dump-autoload
 
-El comando composer dump-autoload de Composer sirve para generar o actualizar el archivo autoload.php, 
-que permite cargar clases de forma automática. Esto mejora la organización y la eficiencia del código, 
-ya que no es necesario incluir las clases manualmente con require o include.
+El comando composer dump-autoload de Composer sirve para generar o actualizar el archivo autoload.php, que permite cargar clases de forma automática. Esto mejora la organización y la eficiencia del código, ya que no es necesario incluir las clases manualmente con require o include.
 
-=============================Despues de clonar un proyecto de laravel=======================
-composer install <------ para descargar dependencias
-
-despues ir a PHP.ini y habilitar el ;extension=zip y quitarle el ";"
-
-
-===============Para pasar datos de un componente a un modal en Angular============
-primero se tienen dos componentes
-el primero es el base
-el segundo es el modal
-
-en el primero vamos a poner esto
-
-openDialog(id: number): void {
-    this.dialog.open(DatosGeneralesDialogComponent, {
-      data:{
-        idDG:id
-      }
-    });
-  }
-
-y en el segundo vamos a recibir esos valores en el constructor asi
-
-constructor(private antecedentesFyH: AntecedentesFyHService,
-    @Inject(MAT_DIALOG_DATA) public datosGenerales: any 
-  ){}
-  
