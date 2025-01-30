@@ -232,6 +232,7 @@ https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/
 
 Crear un Proyecto
 composer create-project laravel/laravel example-app
+composer create-project "laravel/laravel:^10.0" example-app
 
 crear modelo controller, micracion resource
 php artisan make:model Product -mcr
