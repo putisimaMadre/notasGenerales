@@ -316,6 +316,9 @@ Y en el angular.json dejarlo de la siguiente manera
    "node_modules/@coreui/coreui/dist/css/coreui.css",
    "node_modules/primeflex/primeflex.scss"
 
+  =====Actualizacion para cargar todo lo de coreiu=======
+   npm install @coreui/angular @coreui/coreui @coreui/icons-angular
+
 En el proyecto p25102023a esta un ejemplo
 
 ======================PROBLEMA AL INSTALAR ANGULAR MATERIAL====================
