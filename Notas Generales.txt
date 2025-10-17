@@ -546,6 +546,10 @@ Poner este comando en la terminal
 ====================================MYSQL PARA CREAR UNA RELACION=============================
 ALTER TABLE ventas ADD CONSTRAINT fk_compras FOREIGN KEY (id_compras) REFERENCES compras (idcompras);
 
+====================================MYSQL DESDE HOMEBREW (2025)=============================
+Para inicializar desde terminal
+brew services start mysql
+
 ====================================JENKINGS================================
 
 docker run -p 8080:8080 -p 50000:50000 --restart=on-failure -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk17
