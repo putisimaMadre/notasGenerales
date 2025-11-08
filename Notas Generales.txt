@@ -248,7 +248,7 @@ php artisan db:seed --class=PadreSeeder
 
 =====Comandos Laravel======
 php artisan migrate
-php artisan db:seed
+php artisan db:seed [nombreDelSeed]
 
 =============Foreing key laravel===========
 $table->unsignedBigInteger("idPadre")->unique();
