@@ -246,6 +246,10 @@ php artisan make:seeder PadreSeeder
 Ejecutar Seeder
 php artisan db:seed --class=PadreSeeder
 
+=====Comandos Laravel======
+php artisan migrate
+php artisan db:seed [nombreDelSeed]
+
 =============Foreing key laravel===========
 $table->unsignedBigInteger("idPadre")->unique();
 $table->foreign("idPadre")->references("id")->on("padres");
@@ -296,8 +300,6 @@ RewriteRule ^(.*) /index.html [NC,L]
 
 si todo funciona correctamente se debe de poder accesar a una liga similar a esta: donde se tiene el dominio, luego el nombre del proyecto de laravel y luego la ruta
 http://sistemas-integrales-fw.com/p24042023l/public/api/clientes
-
-
 
 ======Angular======
 
@@ -568,6 +570,10 @@ Poner este comando en la terminal
 
 ====================================MYSQL PARA CREAR UNA RELACION=============================
 ALTER TABLE ventas ADD CONSTRAINT fk_compras FOREIGN KEY (id_compras) REFERENCES compras (idcompras);
+
+====================================MYSQL DESDE HOMEBREW (2025)=============================
+Para inicializar desde terminal
+brew services start mysql
 
 ====================================JENKINGS================================
 
