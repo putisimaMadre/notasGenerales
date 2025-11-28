@@ -345,6 +345,29 @@ una vez ahi hay que revisar que las opciones de:
 
 deben de estar palomeada
 
+================ANDROID KOTLIN JETPACK COMPOSE====================
+====>gradle/libs.versions.toml<=======
+
+[versions]
+room = "2.6.1"
+ksp = "2.0.0-1.0.22"
+
+[plugins]
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
+====>build.gradle.kts<=======
+
+plugins {
+    alias(libs.plugins.ksp)
+}
+
+dependencies {
+    // Hilt
+    ksp("com.google.dagger:hilt-android-compiler:2.48")
+    // Compose + Hilt Navigation
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+}
+
 
 =======Validacion Kotlin Email=======
 
