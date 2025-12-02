@@ -356,6 +356,13 @@ kotlin = "2.0.21"
 room = "2.6.1"
 ksp = "2.0.21–1.0.28"
 
+[libraries]
+# ROOM
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room-paging = { group = "androidx.room", name = "room-paging", version.ref = "room" }
+
 [plugins]
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
@@ -366,10 +373,10 @@ plugins {
 }
 
 dependencies {
-    // ROOM (COMPATIBLE)
-    implementation(libs.androidx.room.common.jvm)
-    implementation(libs.androidx.room.ktx)
-    ksp("androidx.room:room-compiler:2.6.1")
+    // ✅ ROOM COMPLETO VIA VERSION CATALOGS
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
 
     // HILT (usa solo Navigation porque tu app no usa DI completo)
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
